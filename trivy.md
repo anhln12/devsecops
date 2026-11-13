@@ -11,8 +11,12 @@ Việc kết nợp Trivy với SonarQube (Sonarqube) trong CI/CD pipeline, đây
 |Điểm mạnh|Phát hiện rất nhanh các lỗ hổng CVE trong hệ điều hành, thư viện lỗi và file cấu hình triển khai|Phát hiện sâu các lỗ hổng logic nghiệp vụ trong code (như SQL Injection, XSS, tràn bộ nhớ, lỗi thiêt kế)|
 
 2. Lợi ích khi két hợp cả hai trong CI/CD Pipeline
-  2.1. Bảo mật toàn diện (Defense in Depth)
+
+2.1. Bảo mật toàn diện (Defense in Depth)
+
 * SonarQube đảm bảo mã do lập trình viên viết ra sạch sẽ, không có logic hay lỗ hổng cú pháp bảo mật (SAST)
 * Trivy bảo đảm các thư viện bên thứ ba (dependencies) và môi trường đóng gói (container image, file config) không chứa lổ hỗng CEV hay để lộ password/token.
 
-  2.2. Tối ưu hóa giai đoạn Shift - Left: Tích hợp cả hai vào quy trình CI (ví dụ: Gitlab CI hoặc GitHub Actions) giúp đội ngũ Dev phát hiện sớm các vấn đề ngay từ khi push code hoặc build image giảm thiểu rủi ro khi đưa lên môi trường Production
+ 2.2. Tối ưu hóa giai đoạn Shift - Left
+
+Tích hợp cả hai vào quy trình CI (ví dụ: Gitlab CI hoặc GitHub Actions) giúp đội ngũ Dev phát hiện sớm các vấn đề ngay từ khi push code hoặc build image giảm thiểu rủi ro khi đưa lên môi trường Production
