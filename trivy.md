@@ -36,3 +36,30 @@ Tích hợp cả hai vào quy trình CI (ví dụ: Gitlab CI hoặc GitHub Actio
 
 * Dùng bản miễn phí khi bạn là cá nhân, team nhỏ, hoặc doanh nghiệp muốn tích hợp nhanh việc quét lỗ hổng và kiểm tra code/container vào CI/CD pipeline
 * Chuyển lên Bản phí khi hệ hệ thống lớn (enterprise), cần quản lý tập trung nhiều cluster, tuân thủ các tiêu chuẩn khắt khe (SOC 2, PCI-DSS, HIPAA), cần giảm thiểu cảnh báo giả (false positive)
+
+4. Cài đặt
+
+Cài trực tiếp
+```
+sudo mkdir -p /etc/apt/sources.list.d
+echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/trivy.list
+sudo apt-get update && sudo apt-get install trivy -y
+trivy --version
+```
+
+Scan
+```
+# Xuất file JSON
+trivy image --format json -o results.json --input ./my-image.tar
+
+# Xuất file HTML (dễ nhìn trên trình duyệt)
+# Tải file template html.tpl
+wget https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl
+
+# Chạy lại lệnh scan và output
+trivy image --skip-version-check --format template --template "@html.tpl" -o results.html --input ./my-gitea\:20261106_rootless.tar
+
+# Quá trình scan có thể mất vài phút cho phần Secret scanning, nếu chỉ muốn tập trung scan CVE
+trivy image --skip-version-check --scanners vuln --format template --template "@html.tpl" -o results.html --input ./my-gitea\:20261106_rootless.tar
+```
+
