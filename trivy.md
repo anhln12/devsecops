@@ -3,6 +3,7 @@ Trivy là một công cụ scan bảo mật mã nguồn mở (open-source vulner
 Việc kết nợp Trivy với SonarQube (Sonarqube) trong CI/CD pipeline, đây là phương pháp tiếp cận tiêu chuẩn trong bảo mật ứng dụng hiện tại (DevSecOps).
 
 1. Phân vai trò giữa Trivy và SonarQube
+
 |Tiêu chuẩn|Trivy|SonarQube|
 |---|---|---|
 |Mục đích chính|Scan hạ tầng, dependency, Infrastructure & Supply Chain|Phân tích chất lượng mã nguồn và lỗi logic/bảo mật tĩnh trong code (SAST - Static Application Security Testing)|
